@@ -1,0 +1,500 @@
+[2023-10-17 19:07:06,153] torch._dynamo.eval_frame: [DEBUG] skipping __init__ /host/software/anaconda3/envs/torch_env/lib/python3.9/contextlib.py
+[2023-10-17 19:07:06,153] torch._dynamo.eval_frame: [DEBUG] skipping __enter__ /host/software/anaconda3/envs/torch_env/lib/python3.9/contextlib.py
+[2023-10-17 19:07:06,153] torch._dynamo.eval_frame: [DEBUG] skipping __init__ /host/software/anaconda3/envs/torch_env/lib/python3.9/contextlib.py
+[2023-10-17 19:07:06,153] torch._dynamo.eval_frame: [DEBUG] skipping __enter__ /host/software/anaconda3/envs/torch_env/lib/python3.9/contextlib.py
+[2023-10-17 19:07:06,153] torch._dynamo.eval_frame: [DEBUG] skipping enable_dynamic /host/software/anaconda3/envs/torch_env/lib/python3.9/site-packages/torch/_dynamo/eval_frame.py
+[2023-10-17 19:07:06,256] torch._dynamo.symbolic_convert: [INFO] Step 1: torchdynamo start tracing toy_example_fcall_cf
+[2023-10-17 19:07:06,256] torch._dynamo.symbolic_convert: [DEBUG] TRACE starts_line /host/workspace/lab/torch_dynamo/dynamo_workflow.py:28
+[2023-10-17 19:07:06,256] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_FAST a []
+[2023-10-17 19:07:06,256] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_GLOBAL torch [TensorVariable()]
+[2023-10-17 19:07:06,256] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_ATTR abs [TensorVariable(), TorchVariable(<module 'torch' from '/host/software/anaconda3/envs/torch_env/lib/python3.9/site-packages/torch/__init__.py'>)]
+[2023-10-17 19:07:06,257] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_FAST a [TensorVariable(), TorchVariable(<built-in method abs of type object at 0x7fffbd4187e0>)]
+[2023-10-17 19:07:06,257] torch._dynamo.symbolic_convert: [DEBUG] TRACE CALL_FUNCTION 1 [TensorVariable(), TorchVariable(<built-in method abs of type object at 0x7fffbd4187e0>), TensorVariable()]
+[2023-10-17 19:07:06,260] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_CONST 1 [TensorVariable(), TensorVariable()]
+[2023-10-17 19:07:06,261] torch._dynamo.symbolic_convert: [DEBUG] TRACE BINARY_ADD None [TensorVariable(), TensorVariable(), ConstantVariable(int)]
+[2023-10-17 19:07:06,262] torch._dynamo.symbolic_convert: [DEBUG] TRACE BINARY_TRUE_DIVIDE None [TensorVariable(), TensorVariable()]
+[2023-10-17 19:07:06,264] torch._dynamo.symbolic_convert: [DEBUG] TRACE STORE_FAST x [TensorVariable()]
+[2023-10-17 19:07:06,264] torch._dynamo.symbolic_convert: [DEBUG] TRACE starts_line /host/workspace/lab/torch_dynamo/dynamo_workflow.py:29
+[2023-10-17 19:07:06,264] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_GLOBAL foo_a []
+[2023-10-17 19:07:06,265] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_FAST x [UserFunctionVariable()]
+[2023-10-17 19:07:06,265] torch._dynamo.symbolic_convert: [DEBUG] TRACE CALL_FUNCTION 1 [UserFunctionVariable(), TensorVariable()]
+[2023-10-17 19:07:06,266] torch._dynamo.symbolic_convert: [DEBUG] INLINING <code object foo_a at 0x7ffff7adf500, file "/host/workspace/lab/torch_dynamo/dynamo_workflow.py", line 14> 
+  15           0 LOAD_FAST                0 (a)
+              2 LOAD_CONST               1 (3)
+              4 BINARY_MULTIPLY
+              6 RETURN_VALUE
+ 
+
+[2023-10-17 19:07:06,267] torch._dynamo.symbolic_convert: [DEBUG] TRACE starts_line /host/workspace/lab/torch_dynamo/dynamo_workflow.py:15
+[2023-10-17 19:07:06,267] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_FAST a []
+[2023-10-17 19:07:06,267] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_CONST 3 [TensorVariable()]
+[2023-10-17 19:07:06,267] torch._dynamo.symbolic_convert: [DEBUG] TRACE BINARY_MULTIPLY None [TensorVariable(), ConstantVariable(int)]
+[2023-10-17 19:07:06,268] torch._dynamo.symbolic_convert: [DEBUG] TRACE RETURN_VALUE None [TensorVariable()]
+[2023-10-17 19:07:06,268] torch._dynamo.symbolic_convert: [DEBUG] DONE INLINING <code object foo_a at 0x7ffff7adf500, file "/host/workspace/lab/torch_dynamo/dynamo_workflow.py", line 14>
+[2023-10-17 19:07:06,268] torch._dynamo.symbolic_convert: [DEBUG] TRACE STORE_FAST x [TensorVariable()]
+[2023-10-17 19:07:06,268] torch._dynamo.symbolic_convert: [DEBUG] TRACE starts_line /host/workspace/lab/torch_dynamo/dynamo_workflow.py:30
+[2023-10-17 19:07:06,268] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_GLOBAL foo_b []
+[2023-10-17 19:07:06,269] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_FAST b [UserFunctionVariable()]
+[2023-10-17 19:07:06,269] torch._dynamo.symbolic_convert: [DEBUG] TRACE CALL_FUNCTION 1 [UserFunctionVariable(), TensorVariable()]
+[2023-10-17 19:07:06,269] torch._dynamo.symbolic_convert: [DEBUG] INLINING <code object foo_b at 0x7ffff7aab710, file "/host/workspace/lab/torch_dynamo/dynamo_workflow.py", line 17> 
+  18           0 LOAD_FAST                0 (a)
+              2 LOAD_CONST               1 (4)
+              4 BINARY_MULTIPLY
+              6 STORE_FAST               1 (b)
+
+ 19           8 LOAD_FAST                1 (b)
+             10 LOAD_METHOD              0 (sum)
+             12 CALL_METHOD              0
+             14 LOAD_CONST               2 (0)
+             16 COMPARE_OP               4 (>)
+             18 POP_JUMP_IF_FALSE       30
+
+ 20          20 LOAD_FAST                1 (b)
+             22 LOAD_CONST               3 (5)
+             24 BINARY_SUBTRACT
+             26 STORE_FAST               1 (b)
+             28 JUMP_FORWARD             8 (to 38)
+
+ 22     >>   30 LOAD_FAST                1 (b)
+             32 LOAD_CONST               4 (6)
+             34 BINARY_ADD
+             36 STORE_FAST               1 (b)
+
+ 23     >>   38 LOAD_FAST                1 (b)
+             40 RETURN_VALUE
+ 
+
+[2023-10-17 19:07:06,269] torch._dynamo.symbolic_convert: [DEBUG] TRACE starts_line /host/workspace/lab/torch_dynamo/dynamo_workflow.py:18
+[2023-10-17 19:07:06,269] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_FAST a []
+[2023-10-17 19:07:06,269] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_CONST 4 [TensorVariable()]
+[2023-10-17 19:07:06,269] torch._dynamo.symbolic_convert: [DEBUG] TRACE BINARY_MULTIPLY None [TensorVariable(), ConstantVariable(int)]
+[2023-10-17 19:07:06,270] torch._dynamo.symbolic_convert: [DEBUG] TRACE STORE_FAST b [TensorVariable()]
+[2023-10-17 19:07:06,270] torch._dynamo.symbolic_convert: [DEBUG] TRACE starts_line /host/workspace/lab/torch_dynamo/dynamo_workflow.py:19
+[2023-10-17 19:07:06,270] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_FAST b []
+[2023-10-17 19:07:06,271] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_ATTR sum [TensorVariable()]
+[2023-10-17 19:07:06,271] torch._dynamo.symbolic_convert: [DEBUG] TRACE CALL_FUNCTION 0 [GetAttrVariable(TensorVariable(), sum)]
+[2023-10-17 19:07:06,272] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_CONST 0 [TensorVariable()]
+[2023-10-17 19:07:06,272] torch._dynamo.symbolic_convert: [DEBUG] TRACE COMPARE_OP > [TensorVariable(), ConstantVariable(int)]
+[2023-10-17 19:07:06,274] torch._dynamo.symbolic_convert: [DEBUG] TRACE POP_JUMP_IF_FALSE 30 [TensorVariable()]
+[2023-10-17 19:07:06,274] torch._dynamo.symbolic_convert: [DEBUG] FAILED INLINING <code object foo_b at 0x7ffff7aab710, file "/host/workspace/lab/torch_dynamo/dynamo_workflow.py", line 17>
+[2023-10-17 19:07:06,274] torch._dynamo.output_graph: [DEBUG] restore_graphstate: removed 3 nodes
+[2023-10-17 19:07:06,274] torch._dynamo.symbolic_convert: [DEBUG] break_graph_if_unsupported triggered compile
+Traceback (most recent call last):
+  File "/host/software/anaconda3/envs/torch_env/lib/python3.9/site-packages/torch/_dynamo/symbolic_convert.py", line 342, in wrapper
+    return inner_fn(self, inst)
+  File "/host/software/anaconda3/envs/torch_env/lib/python3.9/site-packages/torch/_dynamo/symbolic_convert.py", line 965, in CALL_FUNCTION
+    self.call_function(fn, args, {})
+  File "/host/software/anaconda3/envs/torch_env/lib/python3.9/site-packages/torch/_dynamo/symbolic_convert.py", line 474, in call_function
+    self.push(fn.call_function(self, args, kwargs))
+  File "/host/software/anaconda3/envs/torch_env/lib/python3.9/site-packages/torch/_dynamo/variables/functions.py", line 259, in call_function
+    return super().call_function(tx, args, kwargs)
+  File "/host/software/anaconda3/envs/torch_env/lib/python3.9/site-packages/torch/_dynamo/variables/functions.py", line 92, in call_function
+    return tx.inline_user_function_return(
+  File "/host/software/anaconda3/envs/torch_env/lib/python3.9/site-packages/torch/_dynamo/symbolic_convert.py", line 510, in inline_user_function_return
+    result = InliningInstructionTranslator.inline_call(self, fn, args, kwargs)
+  File "/host/software/anaconda3/envs/torch_env/lib/python3.9/site-packages/torch/_dynamo/symbolic_convert.py", line 1806, in inline_call
+    return cls.inline_call_(parent, func, args, kwargs)
+  File "/host/software/anaconda3/envs/torch_env/lib/python3.9/site-packages/torch/_dynamo/symbolic_convert.py", line 1862, in inline_call_
+    tracer.run()
+  File "/host/software/anaconda3/envs/torch_env/lib/python3.9/site-packages/torch/_dynamo/symbolic_convert.py", line 576, in run
+    and self.step()
+  File "/host/software/anaconda3/envs/torch_env/lib/python3.9/site-packages/torch/_dynamo/symbolic_convert.py", line 540, in step
+    getattr(self, inst.opname)(inst)
+  File "/host/software/anaconda3/envs/torch_env/lib/python3.9/site-packages/torch/_dynamo/symbolic_convert.py", line 327, in inner
+    unimplemented(f"generic_jump {typestr(value)}")
+  File "/host/software/anaconda3/envs/torch_env/lib/python3.9/site-packages/torch/_dynamo/exc.py", line 71, in unimplemented
+    raise Unsupported(msg)
+torch._dynamo.exc.Unsupported: generic_jump TensorVariable()
+[2023-10-17 19:07:06,275] torch._dynamo.output_graph: [DEBUG] restore_graphstate: removed 0 nodes
+[2023-10-17 19:07:06,275] torch._dynamo.output_graph: [DEBUG] COMPILING GRAPH due to GraphCompileReason(reason='generic_jump TensorVariable()', user_stack=[<FrameSummary file /host/workspace/lab/torch_dynamo/dynamo_workflow.py, line 30 in toy_example_fcall_cf>, <FrameSummary file /host/workspace/lab/torch_dynamo/dynamo_workflow.py, line 19 in foo_b>])
+[2023-10-17 19:07:06,276] torch._dynamo.output_graph: [DEBUG] REMOVE UNUSED GRAPHARG b
+[2023-10-17 19:07:06,277] torch._dynamo.output_graph: [INFO] Step 2: calling compiler function debug_wrapper
+[2023-10-17 19:07:07,854] torch._inductor.compile_fx: [INFO] Step 3: torchinductor compiling FORWARDS graph 0
+[2023-10-17 19:07:13,333] torch._inductor.graph: [INFO] Output code: /tmp/torchinductor_chenhui.huang/o6/co6dchkzvapulw2mc7zyjnlapud6x2mcdfeiefovru5xizoczvie.py
+[2023-10-17 19:07:13,333] torch._inductor.compile_fx: [INFO] Step 3: torchinductor done compiling FORWARDS graph 0
+[2023-10-17 19:07:13,334] torch._dynamo.output_graph: [INFO] Step 2: done compiler function debug_wrapper
+[2023-10-17 19:07:13,339] torch._dynamo.output_graph: [INFO] TRACED GRAPH
+ __compiled_fn_0 <eval_with_key>.5 opcode         name     target                                                  args          kwargs
+-------------  -------  ------------------------------------------------------  ------------  --------
+placeholder    a        a                                                       ()            {}
+call_function  abs_1    <built-in method abs of type object at 0x7fffbd4187e0>  (a,)          {}
+call_function  add      <built-in function add>                                 (abs_1, 1)    {}
+call_function  truediv  <built-in function truediv>                             (a, add)      {}
+call_function  mul      <built-in function mul>                                 (truediv, 3)  {}
+output         output   output                                                  ((mul,),)     {}
+
+[2023-10-17 19:07:13,340] torch._dynamo.convert_frame: [INFO] ORIGINAL BYTECODE toy_example_fcall_cf /host/workspace/lab/torch_dynamo/dynamo_workflow.py line 26 
+ 28           0 LOAD_FAST                0 (a)
+              2 LOAD_GLOBAL              0 (torch)
+              4 LOAD_METHOD              1 (abs)
+              6 LOAD_FAST                0 (a)
+              8 CALL_METHOD              1
+             10 LOAD_CONST               1 (1)
+             12 BINARY_ADD
+             14 BINARY_TRUE_DIVIDE
+             16 STORE_FAST               2 (x)
+
+ 29          18 LOAD_GLOBAL              2 (foo_a)
+             20 LOAD_FAST                2 (x)
+             22 CALL_FUNCTION            1
+             24 STORE_FAST               2 (x)
+
+ 30          26 LOAD_GLOBAL              3 (foo_b)
+             28 LOAD_FAST                1 (b)
+             30 CALL_FUNCTION            1
+             32 STORE_FAST               1 (b)
+
+ 31          34 LOAD_FAST                2 (x)
+             36 LOAD_FAST                1 (b)
+             38 BINARY_MULTIPLY
+             40 RETURN_VALUE
+
+ 
+[2023-10-17 19:07:13,340] torch._dynamo.convert_frame: [INFO] MODIFIED BYTECODE toy_example_fcall_cf /host/workspace/lab/torch_dynamo/dynamo_workflow.py line 26 
+ 26           0 LOAD_GLOBAL              4 (__compiled_fn_0)
+              2 LOAD_FAST                0 (a)
+              4 CALL_FUNCTION            1
+              6 STORE_FAST               3 (___graph_out_0)
+              8 LOAD_GLOBAL              3 (foo_b)
+             10 LOAD_FAST                1 (b)
+             12 LOAD_FAST                3 (___graph_out_0)
+             14 LOAD_CONST               2 (0)
+             16 BINARY_SUBSCR
+             18 STORE_FAST               2 (x)
+
+ 30          20 CALL_FUNCTION            1
+             22 LOAD_GLOBAL              5 (__resume_at_32_1)
+             24 ROT_TWO
+             26 LOAD_FAST                2 (x)
+             28 CALL_FUNCTION            2
+             30 RETURN_VALUE
+
+ 
+[2023-10-17 19:07:13,342] torch._dynamo.convert_frame: [INFO] GUARDS:
+ - 
+            local 'a' TENSOR_MATCH
+            {
+                'guard_types': ['TENSOR_MATCH'],
+                'code': None,
+                'obj_weakref': <weakref at 0x7fff92c23e50; to 'Tensor' at 0x7ffef23c3c20>
+                'guarded_class': <weakref at 0x7ffef60b1b30; to 'torch._C._TensorMeta' at 0x40ee910 (Tensor)>
+            }
+            
+ - 
+            local 'b' TENSOR_MATCH
+            {
+                'guard_types': ['TENSOR_MATCH'],
+                'code': None,
+                'obj_weakref': <weakref at 0x7ffef234b4a0; to 'Tensor' at 0x7ffef23c3680>
+                'guarded_class': <weakref at 0x7ffef60b1b30; to 'torch._C._TensorMeta' at 0x40ee910 (Tensor)>
+            }
+            
+ - 
+            global 'foo_a' FUNCTION_MATCH
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            global 'foo_b' FUNCTION_MATCH
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            global 'torch' FUNCTION_MATCH
+            {
+                'guard_types': None,
+                'code': None,
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+ - 
+            shape_env '' SHAPE_ENV
+            {
+                'guard_types': ['SHAPE_ENV', 'SHAPE_ENV', 'SHAPE_ENV', 'SHAPE_ENV', 'SHAPE_ENV', 'SHAPE_ENV'],
+                'code': ['a.stride()[0] == 1', 'a.storage_offset() == 0', 'b.size()[0] == a.size()[0]', 'b.stride()[0] == 1', 'b.storage_offset() == 0', 'a.size()[0] != 0 and a.size()[0] != 1'],
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+[2023-10-17 19:07:13,342] torch._dynamo.eval_frame: [DEBUG] skipping _fn /host/software/anaconda3/envs/torch_env/lib/python3.9/site-packages/torch/_dynamo/eval_frame.py
+[2023-10-17 19:07:13,342] torch._dynamo.eval_frame: [DEBUG] skipping nothing /host/software/anaconda3/envs/torch_env/lib/python3.9/site-packages/torch/_dynamo/eval_frame.py
+[2023-10-17 19:07:13,342] torch._dynamo.eval_frame: [DEBUG] skipping __exit__ /host/software/anaconda3/envs/torch_env/lib/python3.9/contextlib.py
+[2023-10-17 19:07:13,342] torch._dynamo.eval_frame: [DEBUG] skipping __exit__ /host/software/anaconda3/envs/torch_env/lib/python3.9/contextlib.py
+[2023-10-17 19:07:13,347] torch._dynamo.symbolic_convert: [INFO] Step 1: torchdynamo start tracing foo_b
+[2023-10-17 19:07:13,347] torch._dynamo.symbolic_convert: [DEBUG] TRACE starts_line /host/workspace/lab/torch_dynamo/dynamo_workflow.py:18
+[2023-10-17 19:07:13,347] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_FAST a []
+[2023-10-17 19:07:13,347] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_CONST 4 [TensorVariable()]
+[2023-10-17 19:07:13,347] torch._dynamo.symbolic_convert: [DEBUG] TRACE BINARY_MULTIPLY None [TensorVariable(), ConstantVariable(int)]
+[2023-10-17 19:07:13,349] torch._dynamo.symbolic_convert: [DEBUG] TRACE STORE_FAST b [TensorVariable()]
+[2023-10-17 19:07:13,349] torch._dynamo.symbolic_convert: [DEBUG] TRACE starts_line /host/workspace/lab/torch_dynamo/dynamo_workflow.py:19
+[2023-10-17 19:07:13,349] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_FAST b []
+[2023-10-17 19:07:13,349] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_ATTR sum [TensorVariable()]
+[2023-10-17 19:07:13,349] torch._dynamo.symbolic_convert: [DEBUG] TRACE CALL_FUNCTION 0 [GetAttrVariable(TensorVariable(), sum)]
+[2023-10-17 19:07:13,351] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_CONST 0 [TensorVariable()]
+[2023-10-17 19:07:13,351] torch._dynamo.symbolic_convert: [DEBUG] TRACE COMPARE_OP > [TensorVariable(), ConstantVariable(int)]
+[2023-10-17 19:07:13,352] torch._dynamo.symbolic_convert: [DEBUG] TRACE POP_JUMP_IF_FALSE 30 [TensorVariable()]
+[2023-10-17 19:07:13,352] torch._dynamo.symbolic_convert: [DEBUG] generic_jump triggered compile
+[2023-10-17 19:07:13,352] torch._dynamo.output_graph: [DEBUG] COMPILING GRAPH due to GraphCompileReason(reason='generic_jump TensorVariable()', user_stack=[<FrameSummary file /host/workspace/lab/torch_dynamo/dynamo_workflow.py, line 19 in foo_b>])
+[2023-10-17 19:07:13,353] torch._dynamo.output_graph: [INFO] Step 2: calling compiler function debug_wrapper
+[2023-10-17 19:07:13,367] torch._inductor.compile_fx: [INFO] Step 3: torchinductor compiling FORWARDS graph 1
+[2023-10-17 19:07:13,384] torch._inductor.graph: [INFO] Output code: /tmp/torchinductor_chenhui.huang/vl/cvlnlwqgweyo4vnfsxbmmymjtqly7ifku454vsm2rxxt4453a2bn.py
+[2023-10-17 19:07:13,384] torch._inductor.compile_fx: [INFO] Step 3: torchinductor done compiling FORWARDS graph 1
+[2023-10-17 19:07:13,384] torch._dynamo.output_graph: [INFO] Step 2: done compiler function debug_wrapper
+[2023-10-17 19:07:13,385] torch._dynamo.output_graph: [INFO] TRACED GRAPH
+ __compiled_fn_2 <eval_with_key>.10 opcode         name    target                   args          kwargs
+-------------  ------  -----------------------  ------------  --------
+placeholder    a       a                        ()            {}
+call_function  mul     <built-in function mul>  (a, 4)        {}
+call_method    sum_1   sum                      (mul,)        {}
+call_function  gt      <built-in function gt>   (sum_1, 0)    {}
+output         output  output                   ((mul, gt),)  {}
+
+[2023-10-17 19:07:13,386] torch._dynamo.convert_frame: [INFO] ORIGINAL BYTECODE foo_b /host/workspace/lab/torch_dynamo/dynamo_workflow.py line 17 
+ 18           0 LOAD_FAST                0 (a)
+              2 LOAD_CONST               1 (4)
+              4 BINARY_MULTIPLY
+              6 STORE_FAST               1 (b)
+
+ 19           8 LOAD_FAST                1 (b)
+             10 LOAD_METHOD              0 (sum)
+             12 CALL_METHOD              0
+             14 LOAD_CONST               2 (0)
+             16 COMPARE_OP               4 (>)
+             18 POP_JUMP_IF_FALSE       30
+
+ 20          20 LOAD_FAST                1 (b)
+             22 LOAD_CONST               3 (5)
+             24 BINARY_SUBTRACT
+             26 STORE_FAST               1 (b)
+             28 JUMP_FORWARD             8 (to 38)
+
+ 22     >>   30 LOAD_FAST                1 (b)
+             32 LOAD_CONST               4 (6)
+             34 BINARY_ADD
+             36 STORE_FAST               1 (b)
+
+ 23     >>   38 LOAD_FAST                1 (b)
+             40 RETURN_VALUE
+
+ 
+[2023-10-17 19:07:13,386] torch._dynamo.convert_frame: [INFO] MODIFIED BYTECODE foo_b /host/workspace/lab/torch_dynamo/dynamo_workflow.py line 17 
+ 17           0 LOAD_GLOBAL              1 (__compiled_fn_2)
+              2 LOAD_FAST                0 (a)
+              4 CALL_FUNCTION            1
+              6 UNPACK_SEQUENCE          2
+              8 STORE_FAST               1 (b)
+             10 POP_JUMP_IF_FALSE       20
+             12 LOAD_GLOBAL              2 (__resume_at_20_3)
+             14 LOAD_FAST                1 (b)
+             16 CALL_FUNCTION            1
+             18 RETURN_VALUE
+        >>   20 LOAD_GLOBAL              3 (__resume_at_30_4)
+             22 LOAD_FAST                1 (b)
+             24 CALL_FUNCTION            1
+             26 RETURN_VALUE
+
+ 
+[2023-10-17 19:07:13,387] torch._dynamo.convert_frame: [INFO] GUARDS:
+ - 
+            local 'a' TENSOR_MATCH
+            {
+                'guard_types': ['TENSOR_MATCH'],
+                'code': None,
+                'obj_weakref': <weakref at 0x7ffef234b4a0; to 'Tensor' at 0x7ffef23c3680>
+                'guarded_class': <weakref at 0x7ffef60b1b30; to 'torch._C._TensorMeta' at 0x40ee910 (Tensor)>
+            }
+            
+ - 
+            shape_env '' SHAPE_ENV
+            {
+                'guard_types': ['SHAPE_ENV', 'SHAPE_ENV', 'SHAPE_ENV'],
+                'code': ['a.stride()[0] == 1', 'a.storage_offset() == 0', 'a.size()[0] != 0 and a.size()[0] != 1'],
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+[2023-10-17 19:07:13,391] torch._dynamo.symbolic_convert: [INFO] Step 1: torchdynamo start tracing <graph break in foo_b>
+[2023-10-17 19:07:13,391] torch._dynamo.symbolic_convert: [DEBUG] TRACE JUMP_ABSOLUTE 22 []
+[2023-10-17 19:07:13,391] torch._dynamo.symbolic_convert: [DEBUG] TRACE starts_line /host/workspace/lab/torch_dynamo/dynamo_workflow.py:20
+[2023-10-17 19:07:13,391] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_FAST b []
+[2023-10-17 19:07:13,391] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_CONST 5 [TensorVariable()]
+[2023-10-17 19:07:13,391] torch._dynamo.symbolic_convert: [DEBUG] TRACE BINARY_SUBTRACT None [TensorVariable(), ConstantVariable(int)]
+[2023-10-17 19:07:13,392] torch._dynamo.symbolic_convert: [DEBUG] TRACE STORE_FAST b [TensorVariable()]
+[2023-10-17 19:07:13,393] torch._dynamo.symbolic_convert: [DEBUG] TRACE JUMP_FORWARD 40 []
+[2023-10-17 19:07:13,393] torch._dynamo.symbolic_convert: [DEBUG] TRACE starts_line /host/workspace/lab/torch_dynamo/dynamo_workflow.py:23
+[2023-10-17 19:07:13,393] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_FAST b []
+[2023-10-17 19:07:13,393] torch._dynamo.symbolic_convert: [DEBUG] TRACE RETURN_VALUE None [TensorVariable()]
+[2023-10-17 19:07:13,393] torch._dynamo.symbolic_convert: [INFO] Step 1: torchdynamo done tracing <graph break in foo_b> (RETURN_VALUE)
+[2023-10-17 19:07:13,393] torch._dynamo.symbolic_convert: [DEBUG] RETURN_VALUE triggered compile
+[2023-10-17 19:07:13,393] torch._dynamo.output_graph: [DEBUG] COMPILING GRAPH due to GraphCompileReason(reason='return_value', user_stack=[<FrameSummary file /host/workspace/lab/torch_dynamo/dynamo_workflow.py, line 23 in <graph break in foo_b>>])
+[2023-10-17 19:07:13,393] torch._dynamo.output_graph: [INFO] Step 2: calling compiler function debug_wrapper
+[2023-10-17 19:07:13,402] torch._inductor.compile_fx: [INFO] Step 3: torchinductor compiling FORWARDS graph 2
+[2023-10-17 19:07:13,412] torch._inductor.graph: [INFO] Output code: /tmp/torchinductor_chenhui.huang/5p/c5p7hnt42447cojiajbn6o6twmbgm44xuoss2heewcqbu4nf2zeg.py
+[2023-10-17 19:07:13,412] torch._inductor.compile_fx: [INFO] Step 3: torchinductor done compiling FORWARDS graph 2
+[2023-10-17 19:07:13,412] torch._dynamo.output_graph: [INFO] Step 2: done compiler function debug_wrapper
+[2023-10-17 19:07:13,412] torch._dynamo.output_graph: [INFO] TRACED GRAPH
+ __compiled_fn_5 <eval_with_key>.15 opcode         name    target                   args       kwargs
+-------------  ------  -----------------------  ---------  --------
+placeholder    b       b                        ()         {}
+call_function  sub     <built-in function sub>  (b, 5)     {}
+output         output  output                   ((sub,),)  {}
+
+[2023-10-17 19:07:13,412] torch._dynamo.convert_frame: [INFO] ORIGINAL BYTECODE <graph break in foo_b> /host/workspace/lab/torch_dynamo/dynamo_workflow.py line 19 
+ 19           0 JUMP_ABSOLUTE           22
+              2 LOAD_FAST                1 (a)
+              4 LOAD_CONST               1 (4)
+              6 BINARY_MULTIPLY
+              8 STORE_FAST               0 (b)
+             10 LOAD_FAST                0 (b)
+             12 LOAD_ATTR                0 (sum)
+             14 CALL_FUNCTION            0
+             16 LOAD_CONST               2 (0)
+             18 COMPARE_OP               4 (>)
+             20 POP_JUMP_IF_FALSE       32
+
+ 20     >>   22 LOAD_FAST                0 (b)
+             24 LOAD_CONST               3 (5)
+             26 BINARY_SUBTRACT
+             28 STORE_FAST               0 (b)
+             30 JUMP_FORWARD             8 (to 40)
+
+ 22     >>   32 LOAD_FAST                0 (b)
+             34 LOAD_CONST               4 (6)
+             36 BINARY_ADD
+             38 STORE_FAST               0 (b)
+
+ 23     >>   40 LOAD_FAST                0 (b)
+             42 RETURN_VALUE
+
+ 
+[2023-10-17 19:07:13,413] torch._dynamo.convert_frame: [INFO] MODIFIED BYTECODE <graph break in foo_b> /host/workspace/lab/torch_dynamo/dynamo_workflow.py line 19 
+ 19           0 LOAD_GLOBAL              1 (__compiled_fn_5)
+              2 LOAD_FAST                0 (b)
+              4 CALL_FUNCTION            1
+              6 UNPACK_SEQUENCE          1
+              8 RETURN_VALUE
+
+ 
+[2023-10-17 19:07:13,413] torch._dynamo.convert_frame: [INFO] GUARDS:
+ - 
+            local 'b' TENSOR_MATCH
+            {
+                'guard_types': ['TENSOR_MATCH'],
+                'code': None,
+                'obj_weakref': <weakref at 0x7fff92a0a310; to 'Tensor' at 0x7ffef3daa6d0>
+                'guarded_class': <weakref at 0x7ffef60b1b30; to 'torch._C._TensorMeta' at 0x40ee910 (Tensor)>
+            }
+            
+ - 
+            shape_env '' SHAPE_ENV
+            {
+                'guard_types': ['SHAPE_ENV', 'SHAPE_ENV', 'SHAPE_ENV'],
+                'code': ['b.stride()[0] == 1', 'b.storage_offset() == 0', 'b.size()[0] != 0 and b.size()[0] != 1'],
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
+[2023-10-17 19:07:13,413] torch._dynamo.eval_frame: [DEBUG] skipping __call__ /host/software/anaconda3/envs/torch_env/lib/python3.9/weakref.py
+[2023-10-17 19:07:13,413] torch._dynamo.eval_frame: [DEBUG] skipping del_ten /host/software/anaconda3/envs/torch_env/lib/python3.9/site-packages/torch/_subclasses/meta_utils.py
+[2023-10-17 19:07:13,413] torch._dynamo.eval_frame: [DEBUG] skipping pop /host/software/anaconda3/envs/torch_env/lib/python3.9/weakref.py
+[2023-10-17 19:07:13,413] torch._dynamo.eval_frame: [DEBUG] skipping __hash__ /host/software/anaconda3/envs/torch_env/lib/python3.9/site-packages/torch/utils/weak.py
+[2023-10-17 19:07:13,413] torch._dynamo.eval_frame: [DEBUG] skipping expired /host/software/anaconda3/envs/torch_env/lib/python3.9/site-packages/torch/multiprocessing/reductions.py
+[2023-10-17 19:07:13,413] torch._dynamo.eval_frame: [DEBUG] skipping _expired /host/software/anaconda3/envs/torch_env/lib/python3.9/site-packages/torch/storage.py
+[2023-10-17 19:07:13,418] torch._dynamo.symbolic_convert: [INFO] Step 1: torchdynamo start tracing <graph break in toy_example_fcall_cf>
+[2023-10-17 19:07:13,418] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_FAST ___stack0 []
+[2023-10-17 19:07:13,418] torch._dynamo.symbolic_convert: [DEBUG] TRACE JUMP_ABSOLUTE 36 [TensorVariable()]
+[2023-10-17 19:07:13,418] torch._dynamo.symbolic_convert: [DEBUG] TRACE STORE_FAST b [TensorVariable()]
+[2023-10-17 19:07:13,418] torch._dynamo.symbolic_convert: [DEBUG] TRACE starts_line /host/workspace/lab/torch_dynamo/dynamo_workflow.py:31
+[2023-10-17 19:07:13,418] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_FAST x []
+[2023-10-17 19:07:13,418] torch._dynamo.symbolic_convert: [DEBUG] TRACE LOAD_FAST b [TensorVariable()]
+[2023-10-17 19:07:13,418] torch._dynamo.symbolic_convert: [DEBUG] TRACE BINARY_MULTIPLY None [TensorVariable(), TensorVariable()]
+[2023-10-17 19:07:13,419] torch._dynamo.symbolic_convert: [DEBUG] TRACE RETURN_VALUE None [TensorVariable()]
+[2023-10-17 19:07:13,419] torch._dynamo.symbolic_convert: [INFO] Step 1: torchdynamo done tracing <graph break in toy_example_fcall_cf> (RETURN_VALUE)
+[2023-10-17 19:07:13,419] torch._dynamo.symbolic_convert: [DEBUG] RETURN_VALUE triggered compile
+[2023-10-17 19:07:13,419] torch._dynamo.output_graph: [DEBUG] COMPILING GRAPH due to GraphCompileReason(reason='return_value', user_stack=[<FrameSummary file /host/workspace/lab/torch_dynamo/dynamo_workflow.py, line 31 in <graph break in toy_example_fcall_cf>>])
+[2023-10-17 19:07:13,420] torch._dynamo.output_graph: [INFO] Step 2: calling compiler function debug_wrapper
+[2023-10-17 19:07:13,432] torch._inductor.compile_fx: [INFO] Step 3: torchinductor compiling FORWARDS graph 3
+[2023-10-17 19:07:13,442] torch._inductor.graph: [INFO] Output code: /tmp/torchinductor_chenhui.huang/7y/c7yzy6t74qrb7666veb4bxqwgfnqywi67s33kzbnh6wflh423q6s.py
+[2023-10-17 19:07:13,442] torch._inductor.compile_fx: [INFO] Step 3: torchinductor done compiling FORWARDS graph 3
+[2023-10-17 19:07:13,442] torch._dynamo.output_graph: [INFO] Step 2: done compiler function debug_wrapper
+[2023-10-17 19:07:13,443] torch._dynamo.output_graph: [INFO] TRACED GRAPH
+ __compiled_fn_6 <eval_with_key>.20 opcode         name     target                   args          kwargs
+-------------  -------  -----------------------  ------------  --------
+placeholder    _stack0  _stack0                  ()            {}
+placeholder    x        x                        ()            {}
+call_function  mul      <built-in function mul>  (x, _stack0)  {}
+output         output   output                   ((mul,),)     {}
+
+[2023-10-17 19:07:13,443] torch._dynamo.convert_frame: [INFO] ORIGINAL BYTECODE <graph break in toy_example_fcall_cf> /host/workspace/lab/torch_dynamo/dynamo_workflow.py line 30 
+ 30           0 LOAD_FAST                0 (___stack0)
+              2 JUMP_ABSOLUTE           36
+              4 LOAD_FAST                2 (a)
+              6 LOAD_GLOBAL              0 (torch)
+              8 LOAD_ATTR                1 (abs)
+             10 LOAD_FAST                2 (a)
+             12 CALL_FUNCTION            1
+             14 LOAD_CONST               1 (1)
+             16 BINARY_ADD
+             18 BINARY_TRUE_DIVIDE
+             20 STORE_FAST               1 (x)
+             22 LOAD_GLOBAL              2 (foo_a)
+             24 LOAD_FAST                1 (x)
+             26 CALL_FUNCTION            1
+             28 STORE_FAST               1 (x)
+             30 LOAD_GLOBAL              3 (foo_b)
+             32 LOAD_FAST                3 (b)
+             34 CALL_FUNCTION            1
+        >>   36 STORE_FAST               3 (b)
+
+ 31          38 LOAD_FAST                1 (x)
+             40 LOAD_FAST                3 (b)
+             42 BINARY_MULTIPLY
+             44 RETURN_VALUE
+
+ 
+[2023-10-17 19:07:13,443] torch._dynamo.convert_frame: [INFO] MODIFIED BYTECODE <graph break in toy_example_fcall_cf> /host/workspace/lab/torch_dynamo/dynamo_workflow.py line 30 
+ 30           0 LOAD_GLOBAL              4 (__compiled_fn_6)
+              2 LOAD_FAST                0 (___stack0)
+              4 LOAD_FAST                1 (x)
+              6 CALL_FUNCTION            2
+              8 UNPACK_SEQUENCE          1
+             10 RETURN_VALUE
+
+ 
+[2023-10-17 19:07:13,444] torch._dynamo.convert_frame: [INFO] GUARDS:
+ - 
+            local 'x' TENSOR_MATCH
+            {
+                'guard_types': ['TENSOR_MATCH'],
+                'code': None,
+                'obj_weakref': <weakref at 0x7fff929f02c0; to 'Tensor' at 0x7ffef23c36d0>
+                'guarded_class': <weakref at 0x7ffef60b1b30; to 'torch._C._TensorMeta' at 0x40ee910 (Tensor)>
+            }
+            
+ - 
+            local '___stack0' TENSOR_MATCH
+            {
+                'guard_types': ['TENSOR_MATCH'],
+                'code': None,
+                'obj_weakref': <weakref at 0x7fff929f0360; to 'Tensor' at 0x7fff92ab2360>
+                'guarded_class': <weakref at 0x7ffef60b1b30; to 'torch._C._TensorMeta' at 0x40ee910 (Tensor)>
+            }
+            
+ - 
+            shape_env '' SHAPE_ENV
+            {
+                'guard_types': ['SHAPE_ENV', 'SHAPE_ENV', 'SHAPE_ENV', 'SHAPE_ENV', 'SHAPE_ENV', 'SHAPE_ENV'],
+                'code': ['___stack0.stride()[0] == 1', '___stack0.storage_offset() == 0', 'x.size()[0] == ___stack0.size()[0]', 'x.stride()[0] == 1', 'x.storage_offset() == 0', '___stack0.size()[0] != 0 and ___stack0.size()[0] != 1'],
+                'obj_weakref': None
+                'guarded_class': None
+            }
+            
